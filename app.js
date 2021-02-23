@@ -1,5 +1,6 @@
 var express=require("express");
 var bodyParser=require('body-parser');
+var path = require('path');
 
 var express = require('express');
 var session = require('express-session');
@@ -20,8 +21,12 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
 app.get('/', function (req, res) {  
-   res.sendFile( __dirname + "/" + "index.html" );  
+   res.sendFile( __dirname + "/" + "index" );  
 }) 
 
 app.get('/register.html', function (req, res) { 
@@ -31,11 +36,11 @@ app.get('/register.html', function (req, res) {
     res.sendFile( __dirname + "/" + "register.html" );  
  })  
  
-app.get('/login.html', function (req, res) { 
+app.get('/login', function (req, res) { 
     if(req.session.loggedin) {
-        return res.redirect('/index_login.html');
+        res.render('index', {error: true});
     } 
-   res.sendFile( __dirname + "/" + "login.html" );  
+    res.render('login', {error: false});
 })  
 
 app.get('/index_login.html', function (req, res) { 
@@ -47,7 +52,7 @@ app.get('/index_login.html', function (req, res) {
 
 app.get('/home', function(req, res) {
 	if (req.session.loggedin) {
-		res.send('Welcome back, ' + req.session.email + '!' + 'y id numero' + req.session.userid);
+		res.render('home', {error: false, email: req.session.email});
 	} else {
 		res.send('Please login to view this page!');
 	}

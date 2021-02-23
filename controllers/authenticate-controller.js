@@ -26,9 +26,9 @@ module.exports.authenticate=function(req,res){
                     message:'successfully authenticated y el id del usuario es '+ results[0].id
                 })*/
                 req.session.loggedin = true;
-				req.session.email = email;
+				        req.session.email = email;
                 req.session.userid = results[0].id;
-				res.redirect('/home');
+				        res.redirect('/home');
             }else{
                 res.json({
                   status:false,
