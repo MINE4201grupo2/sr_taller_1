@@ -17,7 +17,7 @@ block content
           .p-3
             .msg.error#form-results
             .row
-              form.col-xs-12.validate-rest(id="signupForm" action=config.apiUrl+`/controllers/authenticate-controller/` method="post" data-page=`registro-confirmacion` data-error="#form-results")
+              form.col-xs-12.validate-rest(id="signupForm" action=config.apiUrl+`/controllers/register-controller/` method="post" data-page=`registro-confirmacion` data-error="#form-results")
                 .row
                   .col-xs-12
                     .form-group
@@ -37,7 +37,7 @@ block content
                   .col-xs-12
                     .form-group
                       .form-control
-                        input#email(type="text" name="genero" placeholder=' ' required maxlength=255)
+                        input#email(type="text" name="gender" placeholder=' ' required maxlength=255)
                         label(for='genero') Genero (F o M)
                   .col-xs-12
                     .form-group

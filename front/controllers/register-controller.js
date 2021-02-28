@@ -6,15 +6,16 @@ const connection = require('./../db');
 module.exports.register=function(req,res){
   var today = new Date();
   var encryptedString = cryptr.encrypt(req.body.password);
-  var users={
+  var user={
       "age": req.body.age,
       "country":req.body.country,
       "email":req.body.email,
       "password":encryptedString,
+      "gender":req.body.gender,
       "created_at":today,
       "updated_at":today
   }
-  connection.query('INSERT INTO users SET ?',users, function (error, results, fields) {
+  connection.query('INSERT INTO users SET ?',user, function (error, results, fields) {
     if (error) {
       res.json({
           status:false,
