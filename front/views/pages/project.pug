@@ -1,0 +1,57 @@
+extends ../layout
+
+block content
+  #company.container(data-slug=slug data-project=project)
+    h1.mt-6 Diseños disponibles
+    .hr.mb-5.mt-2
+    .public-project-view-d
+    .row
+      .col-xs-12
+        button.primary.public-project-view-b Subir diseño
+        .public-project-view-l
+
+    .project-view-design-list
+
+
+  #new.modal.start-hide(tabindex='-1' role='dialog')
+    .modal-dialog(role='document')
+      form.col-xs-12.validate(id='projectForm' action=config.apiUrl method='post' enctype='multipart/form-data')
+        input#successful(type="hidden" name='successful' value='')
+        input#error(type="hidden" name='error' value='')
+        .modal-content
+          .modal-header
+            .b Enviar imagen para el proyecto
+            button.close.close-modal.flat(type='button' data-dismiss='modal' aria-label='Cerrar')
+              span(aria-hidden='true') &times;
+          .modal-body
+            .row
+              .col-xs-12
+                .form-group
+                  .form-control
+                    input#first_name(type='text' name='first_name' placeholder=' ' required maxlength=255)
+                    label(for='first_name') Nombres
+              .col-xs-12
+                .form-group
+                  .form-control
+                    input#last_name(type='text' name='last_name' placeholder=' ' required maxlength=255)
+                    label(for='last_name') Apellidos
+              .col-xs-12
+                .form-group
+                  .form-control
+                    input#email(type='email' name='email' placeholder=' ' required maxlength=255)
+                    label(for='email') Correo Electrónico
+              .col-xs-12
+                .form-group
+                  .form-control
+                    input#price(type='number' name='price' placeholder=' ' required)
+                    label(for='price') Precio Solicitado
+              .col-xs-12
+                .form-group
+                  .form-control
+                    input#image(type='file' name='image' placeholder=' ' required accept='image/jpeg,image/png')
+                    label(for='image') Archivo de Diseño
+
+          .modal-footer.tr
+            button.secondary.small.close-modal(type='button') Cancelar
+            | #{' '}
+            button.error.small(type='submit') Enviar
