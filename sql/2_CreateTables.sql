@@ -48,15 +48,17 @@ CREATE TABLE IF NOT EXISTS `user_listening_habits`(
 
 CREATE TABLE IF NOT EXISTS `tracks`(
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    `music_track_id` varchar(100) NOT NULL UNIQUE,
-    `music_track_name` varchar(255) DEFAULT NULL,
+    `music_track_id` varchar(100) DEFAULT NULL,
+    `music_track_name` varchar(500) DEFAULT NULL,
     PRIMARY KEY (`id`));
 
 CREATE TABLE IF NOT EXISTS `artists`(
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `music_artist_id` varchar(100) DEFAULT NULL,
-    `music_artist_name` varchar(255) DEFAULT NULL,
+    `music_artist_name` varchar(500) DEFAULT NULL,
     PRIMARY KEY (`id`));
 
+ALTER TABLE artists CONVERT TO CHARACTER SET utf8;
+ALTER TABLE tracks CONVERT TO CHARACTER SET utf8;
 -- show tables;
 
