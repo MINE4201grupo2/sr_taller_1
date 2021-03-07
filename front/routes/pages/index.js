@@ -2,9 +2,12 @@ module.exports = (app) => {
 
   var authenticateController=require('./../../controllers/authenticate-controller');
   var registerController=require('./../../controllers/register-controller');
+  var artistsController=require('./../../controllers/artists-controller');
+  var preferencesController=require('../../controllers/preferences-artists-controller');
 
   app.post('/controllers/register-controller/', registerController.register);
   app.post('/controllers/authenticate-controller/', authenticateController.authenticate);
+  app.post('/controllers/preferences-artists-controller/', preferencesController.postPreferences);
 
   /* GET pages/users listing. */
   app.get('/', (req, res) => {
@@ -53,5 +56,7 @@ module.exports = (app) => {
     }   
 
   });
+
+  app.get("/preference-artists", artistsController.listArtists);
 
 };
