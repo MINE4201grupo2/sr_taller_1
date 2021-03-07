@@ -22,7 +22,7 @@ module.exports.register=function(req,res){
           message:'No se pudo insertar correctamente el usuario'
       })
     }else{
-        res.json({
+      res.render('pages/users/signup_confirm',{
           status:true,
           data:results,
           message:'Usuario registrado '

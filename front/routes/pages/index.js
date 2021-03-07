@@ -12,40 +12,40 @@ module.exports = (app) => {
   /* GET pages/users listing. */
   app.get('/', (req, res) => {
     if(req.session.loggedin){
-      res.render('pages/index', { title: 'RecomendationcesParaTi', js: 'home' ,userProfile: {loggedIn:true,  email: req.session.email } });
+      res.render('pages/index', { title: 'RecomendationcesParaTi',userProfile: {loggedIn:true,  email: req.session.email } });
     }else{
         res.redirect('/iniciar-sesion');
     }    
   });
   app.get('/404', (req, res) => {
-    res.render('pages/404', { title: 'Página no encontrada', js: 'home' });
+    res.render('pages/404', { title: 'Página no encontrada' });
   });
   app.get('/iniciar-sesion', (req, res) => {
     if(req.session.loggedin){
       res.redirect('/');
     }else{
-      res.render('pages/users/login', { title: 'Iniciar Sesión', js: 'home', description: '' });
+      res.render('pages/users/login', { title: 'Iniciar Sesión', description: '' });
     }   
   });
   app.get('/registro', (req, res) => {
-    res.render('pages/users/signup', { title: 'Registrarse', js: 'home', description: '' });
+    res.render('pages/users/signup', { title: 'Registrarse', description: '' });
   });
   app.get('/registro-confirmacion', (req, res) => {
-    res.render('pages/users/signup_confirm', { title: 'Registrarse', js: 'home' });
+    res.render('pages/users/signup_confirm', { title: 'Registrarse' });
   });
   // User
   app.get('/cerrar-sesion', (req, res) => {
     req.session.loggedIn=false;
     req.session.destroy();
-    res.render('pages/users/logout', { title: 'Cerrar Sesión', js: 'home' });
+    res.render('pages/users/logout', { title: 'Cerrar Sesión' });
   });
 
   // publico
   app.get('/successful', (req, res) => {
-    res.render('pages/successful', { title: 'Diseño enviado', js: 'home' });
+    res.render('pages/successful', { title: 'Diseño enviado' });
   });
   app.get('/error', (req, res) => {
-    res.render('pages/error', { title: 'Error al recibir el archivo', js: 'home' });
+    res.render('pages/error', { title: 'Error al recibir el archivo' });
   });
 
   app.get("/user", (req, res) => {

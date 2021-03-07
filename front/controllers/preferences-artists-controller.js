@@ -12,7 +12,7 @@ module.exports.postPreferences=function(req,res){
     connection.query('SELECT id FROM users WHERE email = ?',[req.session.email], function (error, results, fields) {
         if(error) throw error
         userId = results[0].id;
-        console.log(userId)
+        //console.log(userId)
         var inserts = [];
         data.artists.forEach(function (item) {
             //console.log(item);   

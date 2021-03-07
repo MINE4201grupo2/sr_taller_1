@@ -13,6 +13,7 @@ var app = express();
 var authenticateController=require('./controllers/authenticate-controller');
 var registerController=require('./controllers/register-controller');
 
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
 	secret: 'secret',
