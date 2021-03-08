@@ -11,17 +11,6 @@ CREATE TABLE IF NOT EXISTS `users`(
     `updated_at` datetime NOT NULL, 
     PRIMARY KEY (`id`));
 
-CREATE TABLE IF NOT EXISTS `recomendations`(
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `user_id` int(11) NOT NULL UNIQUE,
-    `track_id` int(11) DEFAULT NULL,
-    `artist_id` int(11) DEFAULT NULL,
-    `recomendation_score` decimal(4,4) DEFAULT NULL,
-    `created_at` datetime NOT NULL, 
-    PRIMARY KEY (`id`,`user_id` ),
-    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
-    FOREIGN KEY (`track_id`) REFERENCES `tracks`(`id`),
-    FOREIGN KEY (`artist_id`) REFERENCES `artists`(`id`));
 
 CREATE TABLE IF NOT EXISTS `user_listening_habits`(
     `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -68,3 +57,25 @@ CREATE TABLE IF NOT EXISTS `preferences_tracks`(
     PRIMARY KEY (`id`,`user_id` ),
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
     FOREIGN KEY (`track_id`) REFERENCES `tracks`(`id`));
+
+CREATE TABLE IF NOT EXISTS `recomendations_tracks`(
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `user_id` int(11) NOT NULL,
+    `track_id` int(11) DEFAULT NULL,
+    `recomendation_score` decimal(2,1) DEFAULT NULL,
+    `model` varchar(15) DEFAULT 'coseno',
+    `created_at` datetime NOT NULL, 
+    PRIMARY KEY (`id`,`user_id` ),
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
+    FOREIGN KEY (`track_id`) REFERENCES `tracks`(`id`));
+
+CREATE TABLE IF NOT EXISTS `recomendations_artists`(
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `user_id` int(11) NOT NULL,
+    `artist_id` int(11) DEFAULT NULL,
+    `recomendation_score` decimal(2,1) DEFAULT NULL,
+    `model` varchar(15) DEFAULT 'coseno',
+    `created_at` datetime NOT NULL, 
+    PRIMARY KEY (`id`,`user_id` ),
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
+    FOREIGN KEY (`artist_id`) REFERENCES `artists`(`id`));

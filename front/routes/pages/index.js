@@ -64,8 +64,17 @@ module.exports = (app) => {
 
   app.get("/preference-artists", artistsController.listArtists);
   app.get("/preference-tracks", tracksController.listTracks);
-  app.get('/recomendation-artists', recomendationsArtistsController.listRecomendations);
-  app.get('/recomendation-tracks', recomendationTracksController.listRecomendations);
+  
+  app.post('/recomendation-artists', recomendationsArtistsController.listRecomendations);
+  app.post('/recomendation-tracks', recomendationTracksController.listRecomendations);
 
-
+  app.get("/model-select", (req, res) => {
+    if(req.session.loggedin){
+      res.render('pages/recomendations/model-select', {userProfile: { email: req.session.email }, 
+                                                  models:['coseno','Jaccard','Pearson']} );
+    }else{
+        res.redirect('/iniciar-sesion');
+    }   
+  });
+  
 };

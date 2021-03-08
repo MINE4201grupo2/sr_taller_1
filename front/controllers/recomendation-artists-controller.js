@@ -3,6 +3,7 @@ const connection = require('../db');
  
 module.exports.listRecomendations=function(req,res){
     if(req.session.loggedin){
+        var data = req.body;
         // Query song name an popular songs
         connection.query('SELECT id FROM users WHERE email = ?',[req.session.email], function (error, results, fields) {
             if(error) throw error
@@ -10,7 +11,7 @@ module.exports.listRecomendations=function(req,res){
 
             var sql_artists = `CALL getRecomendationArtists (?,?,?)`
             //console.log(inserts)
-            connection.query(sql_artists,[userId,'coseno',10], function (error, results, fields) {
+            connection.query(sql_artists,[userId,data.model,10], function (error, results, fields) {
                 if (error) throw error
                 //console.log(results[0])
                 res.render('pages/recomendations/recomendation-artists',{title: 'getArtists',
