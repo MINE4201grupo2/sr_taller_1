@@ -17,7 +17,7 @@ module.exports.register=function(req,res){
   }
   connection.query('INSERT INTO users SET ?',user, function (error, results, fields) {
     if (error) {
-      res.json({
+      res.render('pages/users/signup_confirm',{
           status:false,
           message:'No se pudo insertar correctamente el usuario'
       })

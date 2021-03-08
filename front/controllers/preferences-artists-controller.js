@@ -21,7 +21,7 @@ module.exports.postPreferences=function(req,res){
         //console.log(inserts)
         connection.query(sql_artists,[inserts], function (error, results, fields) {
             if (error) throw error
-            console.log('Row inserted:' + results.affectedRows);
+            res.render('pages/successful', { message: 'Row inserted:' + results.affectedRows });
         });
     });
 

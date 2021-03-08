@@ -6,33 +6,21 @@ header
           img(src="/images/logo.png", alt="RecomendationcesParaTi")
 
         .expand
-        .nologin.start-hide
           ul.flex
             li.ph-3
               a.button.secondary(href='/registro') Registro
             li
               a(href='/iniciar-sesion') Iniciar Sesión
-        .login.start-hide.relative
-          a.dropdown(aria-controls='menu-login')
-            span
-              i.fas.fa-user-circle.fa-fw
-              | #{' '}
-              span Hola
-              | #{' '}
-              span.userEmail
-            span.icon.ml-1
-              i.fas.fa-arrow-down.fa-fw
-          #menu-login.dropdown-list.right.shadow
-            ul.list-categories(role='menu')
-              li(role='menuitem')
-                a.item(href='/proyectos')
-                  i.fas.fa-shopping-bag
-                  | #{' '}Proyectos
-              li.hr
-              li(role='menuitem')
-                a.item(href='/cerrar-sesion')
-                  i.fas.fa-sign-out-alt
-                  | #{' '}Cerrar Sesión
+            li
+              a(href='/cerrar-sesion')
+                i.fas.fa-sign-out-alt
+                | #{' '}Cerrar Sesión
+            li(role='menuitem')
+              a(href='/')
+                i.fas.fa-shopping-bag
+                | #{' '}Recomendaciones
+            li(role='menuitem')
+              a(href='/preference-artists') Agregar preferencias
 
   .show-xs
     nav.navbar.primary.shadow.fixed.top
@@ -57,7 +45,9 @@ header
         li(role='menuitem')
           a(href='/')
             i.fas.fa-shopping-bag
-            | #{' '}Proyectos
+            | #{' '}Recomendaciones
+        li(role='menuitem')
+          a(href='/preference-artists') Agregar preferencias
         li(role='menuitem')
           a(href='/cerrar-sesion')
             i.fas.fa-sign-out-alt

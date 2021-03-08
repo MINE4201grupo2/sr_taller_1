@@ -24,7 +24,7 @@ module.exports.authenticate=function(req,res){
                 req.session.loggedin = true;
                 req.session.email = email;
                 req.session.userid = results[0].id;
-                res.redirect('/preference-artists')
+                res.redirect('/')
                 
             }else{
                 res.json({
