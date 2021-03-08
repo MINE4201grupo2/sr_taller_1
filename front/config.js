@@ -9,7 +9,7 @@ const enviroment = {
   site: {
     name: 'RecomendacionesParaTI'
   },
-  apiUrl: process.env.API_URL || 'http://localhost:8070'
+  apiUrl: process.env.API_URL || 'http://localhost:8080'
 };
 
 module.exports = enviroment;
