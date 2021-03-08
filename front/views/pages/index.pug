@@ -6,13 +6,13 @@ block content
     .container
       .row
         .col-lg-5.offset-lg-2.flex
+          | Recomendaciones de :
           img(src="/images/favicon.ico", alt=config.site.name)
+          a(href='/recomendation-artists')
+            button.primary.w-100-xs Artistas
+          a(href='/recomendation-tracks') 
+            button.primary.w-100-xs Canciones
         .col-lg-5
           .p-9.mh-5.a-black-20.rd-0-5
             if userProfile.loggedIn
               h2.green BIENVENIDO #{userProfile.email}
-            .bigx2.b-category #{config.site.name}
-            .subtitle.b El espacio para buscar diseño de tus proyectos
-
-  .container
-    .row

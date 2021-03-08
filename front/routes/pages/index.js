@@ -3,18 +3,23 @@ module.exports = (app) => {
   var authenticateController=require('./../../controllers/authenticate-controller');
   var registerController=require('./../../controllers/register-controller');
   var artistsController=require('./../../controllers/artists-controller');
+  var tracksController=require('./../../controllers/tracks-controller');
   var preferencesController=require('../../controllers/preferences-artists-controller');
+  var preferencesTracksController=require('../../controllers/preferences-tracks-controller');
+  var recomendationsArtistsController=require('../../controllers/recomendation-artists-controller');
+  var recomendationTracksController=require('../../controllers/recomendation-tracks-controller');
 
   app.post('/controllers/register-controller/', registerController.register);
   app.post('/controllers/authenticate-controller/', authenticateController.authenticate);
   app.post('/controllers/preferences-artists-controller/', preferencesController.postPreferences);
+  app.post('/controllers/preferences-tracks-controller/', preferencesTracksController.postPreferences);
 
   /* GET pages/users listing. */
   app.get('/', (req, res) => {
     if(req.session.loggedin){
       res.render('pages/index', { title: 'RecomendationcesParaTi',userProfile: {loggedIn:true,  email: req.session.email } });
     }else{
-        res.redirect('/iniciar-sesion');
+        res.render('index');
     }    
   });
   app.get('/404', (req, res) => {
@@ -58,5 +63,9 @@ module.exports = (app) => {
   });
 
   app.get("/preference-artists", artistsController.listArtists);
+  app.get("/preference-tracks", tracksController.listTracks);
+  app.get('/recomendation-artists', recomendationsArtistsController.listRecomendations);
+  app.get('/recomendation-tracks', recomendationTracksController.listRecomendations);
+
 
 };
