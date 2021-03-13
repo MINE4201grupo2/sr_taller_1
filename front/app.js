@@ -7,7 +7,7 @@ var session = require('express-session');
 const createError = require('http-errors');
 const path = require('path');
 
-var connection = require('./db');
+
 var app = express();
 
 var authenticateController=require('./controllers/authenticate-controller');

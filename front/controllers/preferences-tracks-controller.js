@@ -1,6 +1,4 @@
-const connection = require('../db');
-// cryptr = new Cryptr('myTotalySecretKey');
- 
+
  
 module.exports.postPreferences=function(req,res){
     var sql_artists = "INSERT INTO `preferences_tracks` (`user_id`,`track_id`,`created_at`) VALUES  ? "
@@ -8,7 +6,8 @@ module.exports.postPreferences=function(req,res){
     var data = req.body;
     var today = new Date();
     var userId= ''
-
+    const connection = require('./../db');
+ 
     connection.query('SELECT id FROM users WHERE email = ?',[req.session.email], function (error, results, fields) {
         if(error) throw error
         userId = results[0].id;

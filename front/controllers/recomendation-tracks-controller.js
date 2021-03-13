@@ -1,8 +1,9 @@
-const connection = require('../db');
- 
+
  
 module.exports.listRecomendations=function(req,res){
     if(req.session.loggedin){
+        const connection = require('./../db');
+ 
         var data = req.body;
         //console.log(data)
         // Query song name an popular songs

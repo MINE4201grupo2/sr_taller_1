@@ -1,8 +1,8 @@
-const connection = require('../db');
- 
- 
+
 module.exports.listRecomendations=function(req,res){
     if(req.session.loggedin){
+        const connection = require('./../db');
+ 
         var data = req.body;
         // Query song name an popular songs
         connection.query('SELECT id FROM users WHERE email = ?',[req.session.email], function (error, results, fields) {

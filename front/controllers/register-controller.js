@@ -1,5 +1,4 @@
 var Cryptr = require('cryptr');
-const connection = require('./../db');
 // cryptr = new Cryptr('myTotalySecretKey');
  
  
@@ -15,6 +14,8 @@ module.exports.register=function(req,res){
       "created_at":today,
       "updated_at":today
   }
+  const connection = require('./../db');
+ 
   connection.query('INSERT INTO users SET ?',user, function (error, results, fields) {
     if (error) {
       res.render('pages/users/signup_confirm',{

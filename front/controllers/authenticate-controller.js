@@ -3,12 +3,12 @@
 
 var Cryptr = require('cryptr');
 cryptr = new Cryptr('myTotalySecretKey');
-const connection = require('./../db');
- 
+
 module.exports.authenticate=function(req,res){
     var email=req.body.email;
     var password=req.body.password;
-   
+    const connection = require('./../db');
+ 
    
     connection.query('SELECT * FROM users WHERE email = ?',[email], function (error, results, fields) {
       if (error) {
