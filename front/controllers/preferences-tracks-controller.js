@@ -13,10 +13,14 @@ module.exports.postPreferences=function(req,res){
         userId = results[0].id;
         //console.log(userId)
         var inserts = [];
-        data.artists.forEach(function (item) {
-            //console.log(item);   
-            inserts.push([userId,item,today]);
-        });
+        if(!Array.isArray(data.artists)){
+            inserts.push([userId,data.artists,today]);
+        }else{
+            data.artists.forEach(function (item) {
+                //console.log(item);   
+                inserts.push([userId,item,today]);
+            });
+        }
         //console.log(inserts)
         connection.query(sql_artists,[inserts], function (error, results, fields) {
             if (error) throw error
