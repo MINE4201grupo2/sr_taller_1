@@ -8,6 +8,7 @@ module.exports = (app) => {
   var preferencesTracksController=require('../../controllers/preferences-tracks-controller');
   var recomendationsArtistsController=require('../../controllers/recomendation-artists-controller');
   var recomendationTracksController=require('../../controllers/recomendation-tracks-controller');
+  var runController=require('../../controllers/run');
 
   app.post('/controllers/register-controller/', registerController.register);
   app.post('/controllers/authenticate-controller/', authenticateController.authenticate);
@@ -67,6 +68,8 @@ module.exports = (app) => {
   
   app.post('/recomendation-artists', recomendationsArtistsController.listRecomendations);
   app.post('/recomendation-tracks', recomendationTracksController.listRecomendations);
+
+  app.get("/runController", runController.runController);
 
   app.get("/model-select", (req, res) => {
     if(req.session.loggedin){

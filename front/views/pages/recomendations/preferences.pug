@@ -31,7 +31,7 @@ block content
                             td #{variable.music_artist_id}
                             td #{variable.music_artist_name}
                             td 
-                                input(type='checkbox' value=`${variable.id}` name='artists')
+                                input(type='checkbox' value=`${variable.music_artist_name}` name='artists')
                 .row
                   .col-xs-12.tr
                     button.primary.w-100-xs(type="submit") Guardar preferencias

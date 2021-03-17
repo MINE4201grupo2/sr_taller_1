@@ -43,7 +43,8 @@ DROP TABLE IF EXISTS `preferences`;
 CREATE TABLE IF NOT EXISTS `preferences_artists`(
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `user_id` int(11) NOT NULL,
-    `artist_id` int(11) DEFAULT NULL,
+    `artist_name` varchar(255) DEFAULT NULL,
+    `score` int(11) DEFAULT 5,
     `created_at` datetime NOT NULL, 
     PRIMARY KEY (`id`,`user_id` ),
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
@@ -52,8 +53,9 @@ CREATE TABLE IF NOT EXISTS `preferences_artists`(
 CREATE TABLE IF NOT EXISTS `preferences_tracks`(
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `user_id` int(11) NOT NULL,
-    `track_id` int(11) DEFAULT NULL,
+    `track_name` varchar(255) DEFAULT NULL,
     `created_at` datetime NOT NULL, 
+    `score` int(11) DEFAULT 5,
     PRIMARY KEY (`id`,`user_id` ),
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
     FOREIGN KEY (`track_id`) REFERENCES `tracks`(`id`));

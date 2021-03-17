@@ -1,7 +1,7 @@
 
  
 module.exports.postPreferences=function(req,res){
-    var sql_artists = "INSERT INTO `preferences_artists` (`user_id`,`artist_id`,`created_at`) VALUES  ? "
+    var sql_artists = "INSERT INTO `preferences_artists` (`user_id`,`artist_name`,`created_at`) VALUES  ? "
     //if (error) throw error
     var data = req.body;
     var today = new Date();
@@ -24,7 +24,8 @@ module.exports.postPreferences=function(req,res){
         //console.log(inserts)
         connection.query(sql_artists,[inserts], function (error, results, fields) {
             if (error) throw error
-            res.render('pages/successful', { message: 'Row inserted:' + results.affectedRows });
+
+            res.redirect('/runController');
         });
     });
 

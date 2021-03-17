@@ -1,7 +1,7 @@
 
  
 module.exports.postPreferences=function(req,res){
-    var sql_artists = "INSERT INTO `preferences_tracks` (`user_id`,`track_id`,`created_at`) VALUES  ? "
+    var sql_artists = "INSERT INTO `preferences_tracks` (`user_id`,`track_name`,`created_at`) VALUES  ? "
     //if (error) throw error
     var data = req.body;
     var today = new Date();
