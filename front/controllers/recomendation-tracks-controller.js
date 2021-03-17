@@ -13,7 +13,7 @@ module.exports.listRecomendations=function(req,res){
 
             var sql_artists = `CALL getRecomendationTracks (?,?,?,?)`
             //console.log(inserts)
-            connection.query(sql_artists,[userId,data.model,data.type_model,10], function (error, results, fields) {
+            connection.query(sql_artists,[userId,data.model,data.type_model,20], function (error, results, fields) {
                 if (error) throw error
                 //console.log(results[0])
                 res.render('pages/recomendations/recomendation-tracks',{title: 'getTracks',
