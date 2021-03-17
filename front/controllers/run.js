@@ -38,7 +38,8 @@ connection.query('SELECT id FROM users WHERE email = ?',[req.session.email], fun
               return
             }
             try {
-              resolve(JSON.parse(out[0]));
+              console.log(out)
+              resolve(out);
             } catch(e) {
               reject(e);
             }
