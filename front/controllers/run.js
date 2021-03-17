@@ -10,7 +10,7 @@ connection.query('SELECT id FROM users WHERE email = ?',[req.session.email], fun
     console.log(results[0].id)
     function run() {
         return new Promise((resolve, reject) => {
-          const process = spawn('python', ['./new_user.py', results[0].id]);
+          const process = spawn('python', ['./controllers/new_user.py', results[0].id]);
           console.log("Corrio python")
           const out = []
           process.stdout.on(
@@ -50,7 +50,7 @@ connection.query('SELECT id FROM users WHERE email = ?',[req.session.email], fun
         try {
           const output = await run()
           logOutput('main')(output.message)
-          process.exit(0)
+          res.render('pages/successful', { message: 'Model calculated:' });
         } catch (e) {
           console.error('Error during script execution ', e.stack);
           process.exit(1);
