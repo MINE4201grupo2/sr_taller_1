@@ -40,6 +40,8 @@ ALTER TABLE artists CONVERT TO CHARACTER SET utf8;
 ALTER TABLE tracks CONVERT TO CHARACTER SET utf8;
 -- show tables;
 DROP TABLE IF EXISTS `preferences`;
+DROP TABLE IF EXISTS `preferences_artists`;
+DROP TABLE IF EXISTS `preferences_tracks`;
 CREATE TABLE IF NOT EXISTS `preferences_artists`(
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `user_id` int(11) NOT NULL,
@@ -47,8 +49,7 @@ CREATE TABLE IF NOT EXISTS `preferences_artists`(
     `score` int(11) DEFAULT 5,
     `created_at` datetime NOT NULL, 
     PRIMARY KEY (`id`,`user_id` ),
-    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
-    FOREIGN KEY (`artist_id`) REFERENCES `artists`(`id`));
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`));
 
 CREATE TABLE IF NOT EXISTS `preferences_tracks`(
     `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -57,8 +58,9 @@ CREATE TABLE IF NOT EXISTS `preferences_tracks`(
     `created_at` datetime NOT NULL, 
     `score` int(11) DEFAULT 5,
     PRIMARY KEY (`id`,`user_id` ),
-    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
-    FOREIGN KEY (`track_id`) REFERENCES `tracks`(`id`));
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`));
+ALTER TABLE preferences_tracks CONVERT TO CHARACTER SET utf8;
+ALTER TABLE preferences_artists CONVERT TO CHARACTER SET utf8;
 
 CREATE TABLE IF NOT EXISTS `recomendations_tracks`(
     `id` int(11) NOT NULL AUTO_INCREMENT,
